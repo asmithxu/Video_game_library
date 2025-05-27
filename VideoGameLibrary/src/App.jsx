@@ -20,6 +20,11 @@ function App() {
     })
     console.log(gameData)
   }
+ 
+  useEffect(() => {
+    // Code to run on each render
+    getData()
+}, []);
 
   return (
     <div>
