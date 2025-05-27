@@ -26,11 +26,11 @@ function App() {
       <h1>Video Game Library</h1>
       <div className="games-list">
         {games.map((game) => (
-          <div key={game.id} className="game-card">
-            <img src={game.background_image} alt={game.name} className="game-image" />
-            <h2>{game.name}</h2>
-            <p>Metacritic: {game.metacritic}</p>
-            <p>Released: {game.released}</p>
+          <div key={games.id} className="game-card">
+            <img src={games.background_image} alt={games.name} className="game-image" />
+            <h2>{games.name}</h2>
+            <p>Metacritic: {games.metacritic}</p>
+            <p>Released: {games.released}</p>
           </div>
         ))}
       </div>
