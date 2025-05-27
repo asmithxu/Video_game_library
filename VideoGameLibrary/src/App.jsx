@@ -21,8 +21,11 @@ function App() {
         }
     })
     console.log(gameData)
+    
   }
-  getData()
+   useEffect(() => {
+    getData()
+   },[]);
 
   return (
     <>
