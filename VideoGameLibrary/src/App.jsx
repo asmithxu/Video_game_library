@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     // Code to run on each render
     getData()
-}, []);
+}, [])
 
 return (
     <div>
@@ -40,7 +40,8 @@ return (
         ))}
       </div>
     </div>
-  );
+  )
+}
 
       export default App
 
