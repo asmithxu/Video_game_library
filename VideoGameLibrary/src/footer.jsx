@@ -1,2 +1,10 @@
+import React from "react"
+import './footer.css';
 
-<p> Copyright Joshua Moore, Jiyah S, and Ayana Coleman</p>
+function Footer() {
+    return (
+        <footer className="footer">
+            <p>Copyright Joshua Moore, Jiyah Coleman, and Ayana Smith</p>
+        </footer>
+    );
+}
