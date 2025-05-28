@@ -4,23 +4,22 @@ import Header from './header.jsx'
 import Footer from './footer.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [gameData, setgameData] = useState([])
 
     async function getData() {
     const response = await fetch("https://api.rawg.io/api/games?key=2a81c7e237774deeb08ce07a5fc6cb15&ordering=metacritic&page_size=30")
     let responseData = await response.json()
     responseData = responseData.results
-    console.log(responseData)
-    let gameData = await responseData.map((games) => {
-        return {
-          name: games.name,
-          background_image: games.background_image,
-          metacritic: games.metacritic,
-          released: games.released,
-          id: games.id
-        }
-    })
-    console.log(gameData)
+    let gameData = responseData.map((game) => ({
+          name: game.name,
+          background_image: game.background_image,
+          metacritic: game.metacritic,
+          released: game.released,
+          id: game.id
+        }))
+
+        setgameData(gameData)
+
   }
 
   useEffect(() => {
@@ -32,7 +31,7 @@ function App() {
   return (
     <div>
       <Header />
-      <div className="games-list">
+       <div className="games-list">
         {gameData.map((game) => ( 
           <div key={game.id} className="game-card">
             <img src={game.background_image} alt={game.name} className="game-image" />
