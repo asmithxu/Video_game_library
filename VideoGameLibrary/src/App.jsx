@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
 
     async function getData() {
-    const response = await fetch("https://api.rawg.io/api/games?key=2a81c7e237774deeb08ce07a5fc6cb15&ordering='metacritic'&page_size=30")
+    const response = await fetch("https://api.rawg.io/api/games?key=2a81c7e237774deeb08ce07a5fc6cb15&ordering=metacritic&page_size=30")
     let responseData = await response.json()
     responseData = responseData.results
     console.log(responseData)
