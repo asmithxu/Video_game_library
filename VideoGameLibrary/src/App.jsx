@@ -3,33 +3,30 @@ import './App.css'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [gameData, setgameData] = useState([])
 
     async function getData() {
     const response = await fetch("https://api.rawg.io/api/games?key=2a81c7e237774deeb08ce07a5fc6cb15&ordering='metacritic'&page_size=30")
     let responseData = await response.json()
     responseData = responseData.results
-    console.log(responseData)
-    let gameData = await responseData.map((games) => {
-        return {
+    let gameData = responseData.map((games) => ({
           name: games.name,
           background_image: games.background_image,
           metacritic: games.metacritic,
           released: games.released,
           id: games.id
-        }
-    })
-    console.log(gameData)
-  }
+        }))
+
+        setgameData(games)
+
+  }}
 
   useEffect(() => {
     // Code to run on each render
     getData()
 }, []);
 
-
-  const [gameData, setGameData] = useState([setGameData(gameData)]);
-  return (
+return(
     <div>
       <h1>Video Game Library</h1>
       <div className="games-list">
@@ -44,9 +41,6 @@ function App() {
       </div>
     </div>
   );
-}
 
-      
-
-export default App
+      export default App
 
