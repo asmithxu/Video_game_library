@@ -5,11 +5,19 @@
   text-align: center;
 }
 
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .card {
@@ -20,8 +28,4 @@
   color: #888;
 }
 
-.h {
-  font-size: 1.5em;
-  margin: 0;
-}
 
