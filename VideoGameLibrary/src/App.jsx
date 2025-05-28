@@ -30,6 +30,7 @@ function App() {
   
   return (
     <div>
+      // display the login box, header, and footer
       <LoginBox />
       <Header />
        <div className="games-list">
