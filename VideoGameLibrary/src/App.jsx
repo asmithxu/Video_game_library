@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-
+import Header from './header.jsx'
+import Footer from './footer.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,20 +29,10 @@ function App() {
 }, []);
 
 
-  const [gameData, setGameData] = useState([setGameData(gameData)]);
+  
   return (
     <div>
-      <h1>Video Game Library</h1>
-      <div className="games-list">
-        {games.map((games) => ( 
-          <div key={games.id} className="game-card">
-            <img src={games.background_image} alt={games.name} className="game-image" />
-            <h2>{games.name}</h2>
-            <p>Metacritic: {games.metacritic}</p>
-            <p>Released: {games.released}</p>
-          </div>
-        ))}
-      </div>
+      
     </div>
   );
 }
