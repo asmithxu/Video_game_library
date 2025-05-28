@@ -22,12 +22,18 @@ function App() {
     console.log(gameData)
   }
 
+  useEffect(() => {
+    // Code to run on each render
+    getData()
+}, []);
+
+
   const [gameData, setGameData] = useState([setGameData(gameData)]);
   return (
     <div>
       <h1>Video Game Library</h1>
       <div className="games-list">
-        {games.map((game) => ( 
+        {games.map((games) => ( 
           <div key={games.id} className="game-card">
             <img src={games.background_image} alt={games.name} className="game-image" />
             <h2>{games.name}</h2>
