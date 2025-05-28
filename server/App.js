@@ -69,6 +69,22 @@ app.post("/userdata", async (request, response)=>{
     response.status(201).send(JSON.stringify([...data]))
 })
 
+//Update game data when the user adds the games that they like.
+//This code uses the username to identify what it wants to change.
+app.put("/userdata", async (request, response)=>{
+    const database = await client.db(db);
+    const coll = await database.collection(collection);
+    await coll.updateOne({username: request.body.username},
+        {
+            $set:{
+                game_data: request.body.game_data
+            }
+        }
+    )
+    const data = await coll.find().toArray()
+    response.status(200).send(data)
+})
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost: ${PORT}`)
