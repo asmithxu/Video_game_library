@@ -28,14 +28,24 @@ function App() {
     getData()
 }, []);
 
-
   
   return (
     <div>
-      
+      <h1> Video Game Library </h1>
+      <div className="games-list">
+        {gameData.map((game) => ( 
+          <div key={game.id} className="game-card">
+            <img src={game.background_image} alt={game.name} className="game-image" />
+            <h2>{game.name}</h2>
+            <p>Metacritic: {game.metacritic}</p>
+            <p>Released: {game.released}</p>
+          </div>
+        ))}
+      </div>
     </div>
-  );
+  )
 }
+
 
       
 
