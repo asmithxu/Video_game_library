@@ -31,7 +31,8 @@ function App() {
   
   return (
     <div>
-      <h1> Video Game Library </h1>
+      <Header/> 
+
       <div className="games-list">
         {gameData.map((game) => ( 
           <div key={game.id} className="game-card">
@@ -42,6 +43,8 @@ function App() {
           </div>
         ))}
       </div>
+
+      <Footer/>
     </div>
   )
 }
