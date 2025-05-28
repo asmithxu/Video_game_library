@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -20,17 +21,13 @@ function App() {
     })
     console.log(gameData)
   }
- 
-  useEffect(() => {
-    // Code to run on each render
-    getData()
-}, []);
 
+  const [gameData, setGameData] = useState([setGameData(gameData)]);
   return (
     <div>
       <h1>Video Game Library</h1>
       <div className="games-list">
-        {games.map((games) => (
+        {games.map((game) => ( 
           <div key={games.id} className="game-card">
             <img src={games.background_image} alt={games.name} className="game-image" />
             <h2>{games.name}</h2>
@@ -42,6 +39,7 @@ function App() {
     </div>
   );
 }
+
       
 
 export default App
