@@ -19,13 +19,12 @@ function App() {
         }))
 
         setgameData(gameData)
-
-  }
+   }
 
   useEffect(() => {
     // Code to run on each render
     getData()
-}, []);
+}, [])
 
   
   return (
