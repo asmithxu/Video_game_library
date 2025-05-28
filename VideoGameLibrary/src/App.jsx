@@ -26,9 +26,9 @@ function App() {
     getData()
 }, []);
 
-return(
+return (
     <div>
-      <h1>Video Game Library</h1>
+      <h1> Video Game Library </h1>
       <div className="games-list">
         {gameData.map((game) => ( 
           <div key={game.id} className="game-card">
