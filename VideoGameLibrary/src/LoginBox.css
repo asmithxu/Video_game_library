@@ -14,15 +14,15 @@
 
 .login-box input {
   padding: 6px 10px;
-  border: 1px solid #ffffff;
+  border: 1px solid #000000;
   border-radius: 4px;
 }
 
 .login-box button {
   padding: 6px 16px;
   border: none;
-  background: #463232;
-  color: #fff;
+  background: #000000;
+  color: #ffffff;
   border-radius: 4px;
   cursor: pointer;
 }
