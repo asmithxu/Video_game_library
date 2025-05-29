@@ -30,7 +30,7 @@ app.get("/userdata", async (request,response)=> {
 })
 
 //Get one user. This can be used to grab their info once they login.
-app.get("/userdata/:username", async (request,response)=>{
+app.get("/userdata/:username", async (request,response, next)=>{
     try {
         const database = await client.db(db);
         const coll = await database.collection(collection);
@@ -52,6 +52,7 @@ app.get("/userdata/:username", async (request,response)=>{
 
     } catch (error) {
         console.error("Something went wrong: ", error)
+        next(error)
     }
     
 })
