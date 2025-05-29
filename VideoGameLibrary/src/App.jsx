@@ -21,10 +21,20 @@ function App() {
 
         setgameData(gameData)
    }
+    
+   async function getUser(){
+    let user ='mario'
+    let url = 'https://video-game-libraryapi.onrender.com/userdata/'
+    let userURL = url + user
+    const response = await fetch(userURL)
+    let userdata = await response.json()
+    console.log(userData[0])
+   }
 
   useEffect(() => {
     // Code to run on each render
     getData()
+    getUserData()
 }, [])
 
   
@@ -48,8 +58,31 @@ function App() {
   )
 }
 
-
-      
+async function putRequest(){
+  fetch('https://video-game-libraryapi.onrender.com/userdata/',)
+  method: 'PUT',
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify({
+username: 'sailor_moon',
+game_data: 'Sometimes enjoys games',
+}),
+})
+.then(response => {
+if (!response.ok) {
+throw new Error(HTTP error! status: ${response.status});
+}
+return response.json();
+})
+.then(data => {
+console.log('Success:', data);
+})
+.catch(error => {
+console.error('Error:', error);
+});
+}
+     putRequest() 
 
 export default App
 
