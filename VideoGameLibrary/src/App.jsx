@@ -40,7 +40,7 @@ function App() {
       {/* display the login box, header, and footer */}
       <LoginBox />
       <Header />
-      <div class="sidebar">
+<div class="sidebar">
   <a href="#" class="active" onclick="toggleDropdown()">Saved Games</a>
    <div class="dropdown">
     <select id="myDropdown"></select>
@@ -49,7 +49,7 @@ function App() {
       <div className="games-list">
         {gameData.map((game) => (
           <div key={game.id} className="game-card">
-            <button>Add game</button>
+            <button id= "addGameButton">Add game</button>
             <img src={game.background_image} alt={game.name} className="game-image" />
             <h2>{game.name}</h2>
             <p>Metacritic: {game.metacritic}</p>
@@ -90,3 +90,4 @@ async function putRequest() {
     });
 }
   putRequest()
+
