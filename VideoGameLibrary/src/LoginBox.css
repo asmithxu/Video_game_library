@@ -26,3 +26,11 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.login-box button:hover {
+  background: #333333;
+}
+.login-box button:focus {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}

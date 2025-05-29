@@ -22,7 +22,6 @@
 //     }
 //   };
 
-
 //   return (
 //     <div className="login-box">
 //       <form onSubmit={handleSubmit}>
@@ -43,6 +42,16 @@
 //         <button type="submit">Login</button>
 //       </form>
 //     </div>
+//   );
+// }
+
+// export default LoginBox;
+
+// function RegisterButton({ onClick }) {
+//   return (
+//     <button type="button" onClick={onClick} className="register-button">
+//       Register
+//     </button>
 //   );
 // }
 

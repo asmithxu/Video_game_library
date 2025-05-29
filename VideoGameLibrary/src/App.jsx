@@ -77,6 +77,13 @@ function App() {
     getData()
   }, [])
 
+  let [savedGames, setSavedGames] = useState([]);
+  let handleAddGame = (game) => {
+    if (!savedGames.find(g => g.id === game.id)) {
+      setSavedGames([...savedGames, game]);
+    }
+  };
+
   return (
     <div>
       {/* display the login box, header, and footer */}
@@ -110,9 +117,20 @@ function App() {
       </div>
       
       <Header />
+      <div className="sidebar">
+        <a href="#" className="active">Saved Games</a>
+        <div className="dropdown">
+          <select id="myDropdown">
+            {savedGames.map((game) => (
+              <option key={game.id} value={game.id}>{game.name}</option>
+            ))}
+          </select>
+        </div>
+      </div>
       <div className="games-list">
         {gameData.map((game) => (
           <div key={game.id} className="game-card">
+            <button id="addGameButton" onClick={() => handleAddGame(game)}>Add game</button>
             <img src={game.background_image} alt={game.name} className="game-image" />
             <h2>{game.name}</h2>
             <p>Metacritic: {game.metacritic}</p>
@@ -153,3 +171,4 @@ async function putRequest() {
     });
 }
   putRequest()
+
