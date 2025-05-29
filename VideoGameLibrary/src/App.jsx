@@ -43,6 +43,7 @@ function App() {
       <div className="games-list">
         {gameData.map((game) => (
           <div key={game.id} className="game-card">
+            <button>Add game</button>
             <img src={game.background_image} alt={game.name} className="game-image" />
             <h2>{game.name}</h2>
             <p>Metacritic: {game.metacritic}</p>
@@ -82,3 +83,4 @@ async function putRequest() {
       console.error('Error:', error);
     });
 }
+
