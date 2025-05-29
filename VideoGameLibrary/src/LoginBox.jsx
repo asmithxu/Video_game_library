@@ -33,4 +33,12 @@ function LoginBox() {
   );
 }
 
+function RegisterButton({ onClick }) {
+  return (
+    <button type="button" onClick={onClick} className="register-button">
+      Register
+    </button>
+  );
+}
+
 export default LoginBox;
