@@ -59,3 +59,25 @@ p {
   border-radius: 8px;
   margin-bottom: 12px;
 }
+
+.games-list .game-card {
+  position: relative;
+  padding-bottom: 50px; 
+}
+
+.game-card button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  background-color: #0078d4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.game-card button:hover {
+  background-color: #005fa3;
+}
