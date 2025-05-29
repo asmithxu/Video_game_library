@@ -83,4 +83,4 @@ async function putRequest() {
       console.error('Error:', error);
     });
 }
-
+  putRequest()
