@@ -40,6 +40,12 @@ function App() {
       {/* display the login box, header, and footer */}
       <LoginBox />
       <Header />
+      <div class="sidebar">
+  <a href="#" class="active" onclick="toggleDropdown()">Saved Games</a>
+   <div class="dropdown">
+    <select id="myDropdown"></select>
+   </div>
+</div>
       <div className="games-list">
         {gameData.map((game) => (
           <div key={game.id} className="game-card">

@@ -60,24 +60,38 @@ p {
   margin-bottom: 12px;
 }
 
-.games-list .game-card {
-  position: relative;
-  padding-bottom: 50px; 
+sidebar {
+  position: fixed; /* Or absolute */
+  width: 200px;
+  height: 100vh;
+  background-color: #f1f1f1;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
-.game-card button {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 8px 16px;
-  background-color: #0078d4;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  color: black;
+  display: block;
 }
 
-.game-card button:hover {
-  background-color: #005fa3;
+.sidebar a:hover {
+  color: #06df00;
+}
+
+.dropdown {
+  display: none; /* Initially hide the dropdown */
+  background-color: #eee;
+}
+
+.dropdown a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
 }
