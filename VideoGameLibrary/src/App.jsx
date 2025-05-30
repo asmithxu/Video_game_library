@@ -2,10 +2,31 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './header.jsx'
 import Footer from './footer.jsx'
-import LoginBox from './LoginBox.jsx'
+import './LoginBox.css';
+// import LoginBox from './LoginBox.jsx'
 
 function App() {
   const [gameData, setgameData] = useState([])
+  const [userData, setUserData] = useState([])
+
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  let [newUser, setNewUser] = useState('');
+  let [passwordNew, setPasswordNew] = useState('');
+
+  function changeLoginStatus(){
+    if(loggedIn===false){
+      setLoggedIn(true)
+    }else if(loggedIn===true){
+      setLoggedIn(false)
+    }
+  }
+
+  function handleLogout() {
+    setNewUser('')
+    setPasswordNew('')
+    changeLoginStatus()
+  }
 
   async function getData() {
     const response = await fetch("https://api.rawg.io/api/games?key=2a81c7e237774deeb08ce07a5fc6cb15&ordering='metacritic'&page_size=32")
@@ -21,18 +42,39 @@ function App() {
     setgameData(gameData)
   }
 
-  async function getUser() {
-    let user = 'mario'
-    let url = 'https://video-game-libraryapi.onrender.com/userdata/'
-    let userURL = url + user
-    const response = await fetch(userURL)
-    let userdata = await response.json()
-    console.log(userdata[0])
-  }
+
+  // async function getUser() {
+  //   let user = 'mario'
+  //   let url = 'https://video-game-libraryapi.onrender.com/userdata/'
+  //   let userURL = url + user
+  //   const response = await fetch(userURL)
+  //   let userInfo = await response.json()
+  //   setUserData(userInfo)
+  //   console.log(userInfo)
+  // }
+  
+    let handleSubmit = async (e) => {
+      e.preventDefault();
+      let user = newUser
+      let url = 'https://video-game-libraryapi.onrender.com/userdata/'
+      let userURL = url + user
+      try{
+      const response = await fetch(userURL)
+      let userInfo = await response.json()
+      if(newUser===userInfo[0].username && passwordNew===userInfo[0].password){
+        //alert("Login Successful")
+        changeLoginStatus()
+        setUserData(userInfo)
+      }
+      else{
+        alert("Try again")
+      }}catch(error){
+        alert("Try again")
+      }
+    };
 
   useEffect(() => {
     getData()
-    getUser()
   }, [])
 
   let [savedGames, setSavedGames] = useState([]);
@@ -45,7 +87,38 @@ function App() {
   return (
     <div>
       {/* display the login box, header, and footer */}
-      <LoginBox />
+      {/* userlogin={userData[0] ? userData[0].username: ""} password={userData[0] ? userData[0].password: "" */}
+      <div>{loggedIn ? (
+          <div className="login-box" style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+            <div style={{display:'flex', alignItems:'center'}}>
+              <img src="/src/assets/user-icon.png" style={{width: '40px', height: '40px', marginRight: '10px'}} />
+              <p>Welcome, {newUser}!</p>
+            </div>
+            <button id="logout" onClick={()=>{handleLogout()}}>Log Out</button>
+          </div>
+        ): ( 
+          <div className="login-box">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Username"
+              
+                onChange={e => setNewUser(e.target.value)}
+                required
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                
+                onChange={e => setPasswordNew(e.target.value)}
+                required
+              />
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        ) }
+      </div>
+      
       <Header />
       <div className="sidebar">
         <a href="#" className="active">Saved Games</a>
@@ -60,11 +133,11 @@ function App() {
       <div className="games-list">
         {gameData.map((game) => (
           <div key={game.id} className="game-card">
+            <button id="addGameButton" onClick={() => handleAddGame(game)}>Add game</button>
             <img src={game.background_image} alt={game.name} className="game-image" />
             <h2>{game.name}</h2>
             <p>Metacritic: {game.metacritic}</p>
             <p>Released: {game.released}</p>
-            <button id="addGameButton" onClick={() => handleAddGame(game)}>Add game</button>
           </div>
         ))}
       </div>
