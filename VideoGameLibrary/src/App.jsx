@@ -3,6 +3,7 @@ import './App.css'
 import Header from './header.jsx'
 import Footer from './footer.jsx'
 import './LoginBox.css';
+import Image from 'react-bootstrap/Image';
 // import LoginBox from './LoginBox.jsx'
 
 function App() {
@@ -89,9 +90,11 @@ function App() {
       {/* display the login box, header, and footer */}
       {/* userlogin={userData[0] ? userData[0].username: ""} password={userData[0] ? userData[0].password: "" */}
       <div>{loggedIn ? (
-          <div className="login-box" style={{display:'flex', justifyContent:'space-between'}}>
-            <p>Welcome, {newUser}!</p>
-            <button id="logout" onClick={()=>{handleLogout()}}>Log Out</button>
+          <div className="login-box" style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+            <div style={{display:'flex', alignItems:'center'}}>
+              <div style={{padding:'20px'}}><Image src={userData[0].profile_img} roundedCircle style={{height:'100px', width:'100px'}} /></div><p>Welcome, {newUser}!</p>
+              </div>
+              <button id="logout" onClick={()=>{handleLogout()}}>Log Out</button>
           </div>
         ): ( 
           <div className="login-box">
@@ -130,11 +133,11 @@ function App() {
       <div className="games-list">
         {gameData.map((game) => (
           <div key={game.id} className="game-card">
-            <button id="addGameButton" onClick={() => handleAddGame(game)}>Add game</button>
             <img src={game.background_image} alt={game.name} className="game-image" />
             <h2>{game.name}</h2>
             <p>Metacritic: {game.metacritic}</p>
             <p>Released: {game.released}</p>
+            <button id="addGameButton" onClick={() => handleAddGame(game)}>Add game</button>
           </div>
         ))}
       </div>
