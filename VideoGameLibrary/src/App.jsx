@@ -24,11 +24,14 @@ function App() {
   }
 
   function handleLogout() {
+    putRequest()
+    setSavedGames([])
     setNewUser('')
     setPasswordNew('')
     changeLoginStatus()
   }
 
+  //Funtion to make an API call to get video game data to show on the page
   async function getData() {
     const response = await fetch("https://api.rawg.io/api/games?key=2a81c7e237774deeb08ce07a5fc6cb15&ordering='metacritic'&page_size=32")
     let responseData = await response.json()
@@ -42,6 +45,33 @@ function App() {
     }))
     setgameData(gameData)
   }
+
+  //funtion to add the video game data to the database. It is called 
+  //When the user clicks the logout button
+  async function putRequest() {
+  fetch('https://video-game-libraryapi.onrender.com/userdata/', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: userData[0].username,
+      game_data: savedGames,
+    }),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 
   //Get the user info when they login and change the login status
   
@@ -57,6 +87,7 @@ function App() {
         //alert("Login Successful")
         changeLoginStatus()
         setUserData(userInfo)
+        setSavedGames(userInfo[0].game_data)
       }
       else{
         alert("Try again")
@@ -141,29 +172,3 @@ function App() {
 
 export default App
 
-// If you want to use putRequest, fix its syntax and call it as needed:
-async function putRequest() {
-  fetch('https://video-game-libraryapi.onrender.com/userdata/', {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      username: 'sailor_moon',
-      game_data: 'Sometimes enjoys games',
-    }),
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Success:', data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-}
-  putRequest()
