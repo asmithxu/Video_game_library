@@ -66,7 +66,7 @@ function App() {
       return response.json();
     })
     .then(data => {
-      console.log('Success:', data);
+      console.log('Updates saved.');
     })
     .catch(error => {
       console.error('Error:', error);
