@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './header.jsx'
 import Footer from './footer.jsx'
-import LoginBox from './LoginBox.jsx'
+
+import './LoginBox.css';
+import Image from 'react-bootstrap/Image';
+// import LoginBox from './LoginBox.jsx'
 
 function App() {
   const [gameData, setgameData] = useState([])
@@ -45,7 +48,36 @@ function App() {
   return (
     <div>
       {/* display the login box, header, and footer */}
-      <LoginBox />
+      {/* userlogin={userData[0] ? userData[0].username: ""} password={userData[0] ? userData[0].password: "" */}
+      <div>{loggedIn ? (
+          <div className="login-box" style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+            <div style={{display:'flex', alignItems:'center'}}>
+              <div style={{padding:'20px'}}><Image src={userData[0].profile_img} roundedCircle style={{height:'100px', width:'100px'}} /></div><p>Welcome, {newUser}!</p>
+              </div>
+              <button id="logout" onClick={()=>{handleLogout()}}>Log Out</button>
+          </div>
+        ): ( 
+          <div className="login-box">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Username"
+              
+                onChange={e => setNewUser(e.target.value)}
+                required
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                
+                onChange={e => setPasswordNew(e.target.value)}
+                required
+              />
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        ) }
+      </div>
       <Header />
       <div className="sidebar">
         <a href="#" className="active">Saved Games</a>
