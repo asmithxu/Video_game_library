@@ -2,22 +2,17 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './header.jsx'
 import Footer from './footer.jsx'
-<<<<<<< HEAD
-import './LoginBox.css';
-=======
-
 import './LoginBox.css';
 import Image from 'react-bootstrap/Image';
->>>>>>> f884963272519cceb05e7fdaa552c5578d63c85a
 // import LoginBox from './LoginBox.jsx'
 
 function App() {
   const [gameData, setgameData] = useState([])
-  const [userData, setUserData] = useState([])
+  const[userData, setUserData] = useState([])
 
-  const [loggedIn, setLoggedIn] = useState(false)
+  const[loggedIn, setLoggedIn] = useState(false)
 
-  let [newUser, setNewUser] = useState('');
+  let[newUser, setNewUser] = useState('');
   let [passwordNew, setPasswordNew] = useState('');
 
   function changeLoginStatus(){
@@ -48,16 +43,7 @@ function App() {
     setgameData(gameData)
   }
 
-
-  // async function getUser() {
-  //   let user = 'mario'
-  //   let url = 'https://video-game-libraryapi.onrender.com/userdata/'
-  //   let userURL = url + user
-  //   const response = await fetch(userURL)
-  //   let userInfo = await response.json()
-  //   setUserData(userInfo)
-  //   console.log(userInfo)
-  // }
+  //Get the user info when they login and change the login status
   
     let handleSubmit = async (e) => {
       e.preventDefault();
@@ -79,6 +65,8 @@ function App() {
       }
     };
 
+// Render the games when the page loads
+
   useEffect(() => {
     getData()
   }, [])
@@ -97,16 +85,9 @@ function App() {
       <div>{loggedIn ? (
           <div className="login-box" style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
             <div style={{display:'flex', alignItems:'center'}}>
-<<<<<<< HEAD
-              <img src="/src/assets/user-icon.png" style={{width: '40px', height: '40px', marginRight: '10px'}} />
-              <p>Welcome, {newUser}!</p>
-            </div>
-            <button id="logout" onClick={()=>{handleLogout()}}>Log Out</button>
-=======
               <div style={{padding:'20px'}}><Image src={userData[0].profile_img} roundedCircle style={{height:'100px', width:'100px'}} /></div><p>Welcome, {newUser}!</p>
               </div>
               <button id="logout" onClick={()=>{handleLogout()}}>Log Out</button>
->>>>>>> f884963272519cceb05e7fdaa552c5578d63c85a
           </div>
         ): ( 
           <div className="login-box">
@@ -130,10 +111,7 @@ function App() {
           </div>
         ) }
       </div>
-<<<<<<< HEAD
       
-=======
->>>>>>> f884963272519cceb05e7fdaa552c5578d63c85a
       <Header />
       <div className="sidebar">
         <a href="#" className="active">Saved Games</a>
@@ -148,11 +126,11 @@ function App() {
       <div className="games-list">
         {gameData.map((game) => (
           <div key={game.id} className="game-card">
-            <button id="addGameButton" onClick={() => handleAddGame(game)}>Add game</button>
             <img src={game.background_image} alt={game.name} className="game-image" />
             <h2>{game.name}</h2>
             <p>Metacritic: {game.metacritic}</p>
             <p>Released: {game.released}</p>
+            <button id="addGameButton" onClick={() => handleAddGame(game)}>Add game</button>
           </div>
         ))}
       </div>
@@ -189,4 +167,3 @@ async function putRequest() {
     });
 }
   putRequest()
-
