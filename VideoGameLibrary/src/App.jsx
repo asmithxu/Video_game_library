@@ -2,13 +2,32 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './header.jsx'
 import Footer from './footer.jsx'
-
 import './LoginBox.css';
 import Image from 'react-bootstrap/Image';
 // import LoginBox from './LoginBox.jsx'
 
 function App() {
   const [gameData, setgameData] = useState([])
+  const[userData, setUserData] = useState([])
+
+  const[loggedIn, setLoggedIn] = useState(false)
+
+  let[newUser, setNewUser] = useState('');
+  let [passwordNew, setPasswordNew] = useState('');
+
+  function changeLoginStatus(){
+    if(loggedIn===false){
+      setLoggedIn(true)
+    }else if(loggedIn===true){
+      setLoggedIn(false)
+    }
+  }
+
+  function handleLogout() {
+    setNewUser('')
+    setPasswordNew('')
+    changeLoginStatus()
+  }
 
   async function getData() {
     const response = await fetch("https://api.rawg.io/api/games?key=2a81c7e237774deeb08ce07a5fc6cb15&ordering='metacritic'&page_size=32")
@@ -24,18 +43,32 @@ function App() {
     setgameData(gameData)
   }
 
-  async function getUser() {
-    let user = 'mario'
-    let url = 'https://video-game-libraryapi.onrender.com/userdata/'
-    let userURL = url + user
-    const response = await fetch(userURL)
-    let userdata = await response.json()
-    console.log(userdata[0])
-  }
+  //Get the user info when they login and change the login status
+  
+    let handleSubmit = async (e) => {
+      e.preventDefault();
+      let user = newUser
+      let url = 'https://video-game-libraryapi.onrender.com/userdata/'
+      let userURL = url + user
+      try{
+      const response = await fetch(userURL)
+      let userInfo = await response.json()
+      if(newUser===userInfo[0].username && passwordNew===userInfo[0].password){
+        //alert("Login Successful")
+        changeLoginStatus()
+        setUserData(userInfo)
+      }
+      else{
+        alert("Try again")
+      }}catch(error){
+        alert("Try again")
+      }
+    };
+
+// Render the games when the page loads
 
   useEffect(() => {
     getData()
-    getUser()
   }, [])
 
   let [savedGames, setSavedGames] = useState([]);
@@ -78,6 +111,7 @@ function App() {
           </div>
         ) }
       </div>
+      
       <Header />
       <div className="sidebar">
         <a href="#" className="active">Saved Games</a>
@@ -133,4 +167,3 @@ async function putRequest() {
     });
 }
   putRequest()
-
