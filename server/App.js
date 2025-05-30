@@ -66,7 +66,6 @@ app.post("/userdata", async (request, response)=>{
 
   
     let data = [newUser]
-    console.log('Received data', newUser)
     response.status(201).send(JSON.stringify([...data]))
     } catch (error) {
         console.error("Something went wrong: ", error)
