@@ -2,7 +2,13 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './header.jsx'
 import Footer from './footer.jsx'
+<<<<<<< HEAD
 import './LoginBox.css';
+=======
+
+import './LoginBox.css';
+import Image from 'react-bootstrap/Image';
+>>>>>>> f884963272519cceb05e7fdaa552c5578d63c85a
 // import LoginBox from './LoginBox.jsx'
 
 function App() {
@@ -91,10 +97,16 @@ function App() {
       <div>{loggedIn ? (
           <div className="login-box" style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
             <div style={{display:'flex', alignItems:'center'}}>
+<<<<<<< HEAD
               <img src="/src/assets/user-icon.png" style={{width: '40px', height: '40px', marginRight: '10px'}} />
               <p>Welcome, {newUser}!</p>
             </div>
             <button id="logout" onClick={()=>{handleLogout()}}>Log Out</button>
+=======
+              <div style={{padding:'20px'}}><Image src={userData[0].profile_img} roundedCircle style={{height:'100px', width:'100px'}} /></div><p>Welcome, {newUser}!</p>
+              </div>
+              <button id="logout" onClick={()=>{handleLogout()}}>Log Out</button>
+>>>>>>> f884963272519cceb05e7fdaa552c5578d63c85a
           </div>
         ): ( 
           <div className="login-box">
@@ -118,7 +130,10 @@ function App() {
           </div>
         ) }
       </div>
+<<<<<<< HEAD
       
+=======
+>>>>>>> f884963272519cceb05e7fdaa552c5578d63c85a
       <Header />
       <div className="sidebar">
         <a href="#" className="active">Saved Games</a>
