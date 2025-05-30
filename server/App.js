@@ -59,7 +59,7 @@ app.get("/userdata/:username", async (request,response, next)=>{
 
 // Create a new user
 app.post("/userdata", async (request, response)=>{
-    let newUser = {...request.body};
+    try {let newUser = {...request.body};
     const database = await client.db(db);
     const coll = await database.collection(collection);
     await coll.insertOne(newUser)
@@ -68,12 +68,15 @@ app.post("/userdata", async (request, response)=>{
     let data = [newUser]
     console.log('Received data', newUser)
     response.status(201).send(JSON.stringify([...data]))
+    } catch (error) {
+        console.error("Something went wrong: ", error)
+    }
 })
 
 //Update game data when the user adds the games that they like.
 //This code uses the username to identify what it wants to change.
 app.put("/userdata", async (request, response)=>{
-    const database = await client.db(db);
+    try {const database = await client.db(db);
     const coll = await database.collection(collection);
     await coll.updateOne({username: request.body.username},
         {
@@ -84,6 +87,9 @@ app.put("/userdata", async (request, response)=>{
     )
     const data = await coll.find().toArray()
     response.status(200).send(data)
+    } catch (error) {
+        console.error("Something went wrong: ", error)
+    }
 })
 
 // Start the server
