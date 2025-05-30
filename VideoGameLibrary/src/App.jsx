@@ -43,16 +43,7 @@ function App() {
     setgameData(gameData)
   }
 
-
-  // async function getUser() {
-  //   let user = 'mario'
-  //   let url = 'https://video-game-libraryapi.onrender.com/userdata/'
-  //   let userURL = url + user
-  //   const response = await fetch(userURL)
-  //   let userInfo = await response.json()
-  //   setUserData(userInfo)
-  //   console.log(userInfo)
-  // }
+  //Get the user info when they login and change the login status
   
     let handleSubmit = async (e) => {
       e.preventDefault();
@@ -73,6 +64,8 @@ function App() {
         alert("Try again")
       }
     };
+
+// Render the games when the page loads
 
   useEffect(() => {
     getData()
