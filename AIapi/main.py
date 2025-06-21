@@ -11,7 +11,7 @@ key = os.environ['API_KEY']
 
 client = openai.OpenAI(api_key=key)
 
-conversation_history = [{"role":"system", "content":"You are a helpful assistant"}]
+conversation_history = [{"role":"system", "content":"You are a helpful assistant. You will give a recommendation for the next video game based on the input you receive. You do not need to restate the games. Include a brief summary of why you chose those games.The response can be no more than 50 words"}]
 
 #Define function to interact with ChatGPT API
 
@@ -22,13 +22,13 @@ def chat_with_gpt(user_input):
         model="gpt-4o-mini",  # Use GPT-4o-mini model
         messages=conversation_history,
         temperature=0.7,  # Adjust for more creative responses
-        max_tokens=40
+        max_tokens=70
     )
 
     #get response text
     chatbox_reply = response.choices[0].message.content
     conversation_history.append({"role":"assistant", "content":chatbox_reply})
-    return conversation_history
+    return [{"role":"assistant", "content":chatbox_reply}]
 
 app = FastAPI()
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './header.jsx'
 import Footer from './footer.jsx'
+import Chatbox from './Chatbox.jsx'
 import './LoginBox.css';
 import Image from 'react-bootstrap/Image';
 // import LoginBox from './LoginBox.jsx'
@@ -144,6 +145,7 @@ function App() {
       </div>
       
       <Header />
+      <div style={{display: 'flex', justifyContent:'space-between'}}>
       <div className="sidebar">
         <a href="#" className="active">Saved Games</a>
         <div className="dropdown">
@@ -153,6 +155,8 @@ function App() {
             ))}
           </select>
         </div>
+      </div>
+      <Chatbox savedGames={savedGames}/>
       </div>
       <div className="games-list">
         {gameData.map((game) => (
