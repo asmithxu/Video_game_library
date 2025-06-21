@@ -1,6 +1,8 @@
 # Video_game_library
 
-<iframe width="560" height="315" src="https://drive.google.com/file/d/1vd-QhY-h4eB0nxAKk-1yl6dAaFLdKxkG/view?usp=sharing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<video width="320" height="240" controls>
+  <source src="https://drive.google.com/file/d/1vd-QhY-h4eB0nxAKk-1yl6dAaFLdKxkG/view?usp=sharing">
+</video> 
 
 
 Project Name: Video Game Library
