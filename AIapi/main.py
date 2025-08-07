@@ -15,7 +15,7 @@ key = os.environ['API_KEY']
 
 client = openai.OpenAI(api_key=key)
 
-conversation_history = [{"role":"system", "content":"You are a helpful assistant. You will give a recommendation for the next video game based on the input you receive. You do not need to restate the games. Include a brief summary of why you chose those games.The response can be no more than 50 words"}]
+conversation_history = [{"role":"system", "content":"You are a helpful assistant."}]
 
 #Define function to interact with ChatGPT API
 
