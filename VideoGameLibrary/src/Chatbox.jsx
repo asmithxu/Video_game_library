@@ -8,7 +8,7 @@ function Chatbox(props) {
     my_prompt = `${my_prompt}`
     
     const body = {"message": my_prompt}
-    const client = "http://127.0.0.1:8000/ask" // use the endpoint from your render server 
+    const client = "https://video-game-library-chatapi.onrender.com/ask" // use the endpoint from your render server 
     
     const response = await fetch( client, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)})
     const conversation =  await response.json()

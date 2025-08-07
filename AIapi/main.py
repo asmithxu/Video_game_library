@@ -29,10 +29,15 @@ def chat_with_gpt(user_input):
         max_tokens=70
     )
 
-    #get response text
-    chatbox_reply = response.choices[0].message.content
-    conversation_history.append({"role":"assistant", "content":chatbox_reply})
-    return [{"role":"assistant", "content":chatbox_reply}]
+    #get response text for video game library
+    # chatbox_reply = response.choices[0].message.content
+    # conversation_history.append({"role":"assistant", "content":chatbox_reply})
+    # return [{"role":"assistant", "content":chatbox_reply}]
+
+    # Extract response text
+    chatbot_reply = response.choices[0].message.content
+    conversation_history.append({"role": "assistant", "content": chatbot_reply})
+    return conversation_history
 
 app = FastAPI()
 
