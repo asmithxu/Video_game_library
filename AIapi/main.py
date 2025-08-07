@@ -5,6 +5,10 @@ from dotenv import load_dotenv
 import openai
 import os
 
+#In order to run the app, I need to use uvicorn main:app --reload
+#When I used uvicorn main:app --reload I got the message 'uvicorn' is not recognized as an internal or external command,
+#operable program or batch file.
+
 load_dotenv()
 
 key = os.environ['API_KEY']
